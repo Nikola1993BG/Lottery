@@ -1,0 +1,44 @@
+{
+    "bonuses": 
+    [
+        {
+            "prize": 40, 
+            "qty": 4,
+            "conditions": [
+                {"type": "bet", "cond": ">", "val": 100},
+                {"type": "win", "cond": ">", "val": 0}
+            ]
+  
+        },
+        {
+            "prize": 100,
+            "qty": 1,
+            "conditions": 
+            [
+                {"type": "win", "cond": ">", "val": 400},
+                {"type": "bets", "cond": "==", "val": 3},
+                {"type": "loss", "cond": "==", "val": 0}
+            ]
+        },
+        {
+            "prize": 150,
+            "qty": 1,
+            "conditions": 
+            [
+                {"type": "win", "cond": ">", "val": 400},
+                {"type": "bets", "cond": ">", "val": 2},
+                {"type": "bets", "cond": ">", "val": 2}
+            ]
+        },
+        {
+            "prize": 50,
+            "qty": 1,
+            "conditions": 
+            [
+                {"type": "win", "cond": ">", "val": 400},
+                {"type": "bets", "cond": ">", "val": 5},
+                {"type": "bets", "cond": ">", "val": 2}
+            ]
+        }
+    ]
+}

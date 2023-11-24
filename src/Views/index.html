@@ -1,0 +1,99 @@
+{% extends 'layout.html' %}
+
+
+{% block body %}
+<div class="row">
+    <div class="col-lg-6">
+    <form action="/upload" method="post" id="form" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <input type="submit" />
+    </form>
+    </div>
+    <div class="col-lg-6">
+    <form action="/" method="post" id="form" enctype="multipart/form-data">
+        <input type="hidden" name="play" value="1">
+        <input type="submit" value="Play" />
+    </form>
+    </div>
+</div>
+<div>
+
+    <h5>Winners</h5>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Win</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for winner in winners %}
+            <tr>
+                <td>{{winner.name}}</td>
+                <td>{{winner.playForBonus}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+</div>
+
+<div>
+    <h5>All Bets</h5>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Bet</th>
+                <th scope="col">Win</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for bet in bets %}
+            <tr>
+                <td>{{bet.ID}}</td>
+                <td>{{bet.Name}}</td>
+                <td>{{bet.Bet}}</td>
+                <td>{{bet.Win}}</td>
+                <td>{{bet.Status}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div>
+    <h5>Bonuses</h5>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Prize</th>
+                <th scope="col">Qty</th>
+                <th scope="col">Conditions</th>
+            </tr>
+        </thead>
+        <tbody>
+    {% for bonus in bonuses %}
+    <tr>
+        <td rowspan="{{bonus.conditions|length+1}}">{{bonus.prize}}</td>
+        <td rowspan="{{bonus.conditions|length+1}}">{{bonus.qty}}</td>
+    </tr>
+       
+    {% for condition in bonus.conditions %}
+        <tr>
+            <td>{{condition.type}} {{condition.cond}} {{condition.val}}</td>
+        </tr>
+    {% endfor %}
+      
+ 
+    {% endfor %}
+    </tbody>
+    </table>
+</div>
+
+
+{% endblock %}
+
